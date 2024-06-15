@@ -1,6 +1,7 @@
 import { ConvexError, v } from "convex/values";
 
 import { internalMutation, query } from "./_generated/server";
+
 //get user by id
 export const getUserById = query({
   args: { clerkId: v.string() },
@@ -47,6 +48,7 @@ export const getTopUserByPodcastCount = query({
     return userData.sort((a, b) => b.totalPodcasts - a.totalPodcasts);
   },
 });
+
 //create user
 export const createUser = internalMutation({
   args: {
@@ -64,6 +66,7 @@ export const createUser = internalMutation({
     });
   },
 });
+
 //update user
 export const updateUser = internalMutation({
   args: {
@@ -100,6 +103,7 @@ export const updateUser = internalMutation({
     );
   },
 });
+
 //delete user
 export const deleteUser = internalMutation({
   args: { clerkId: v.string() },
@@ -116,5 +120,3 @@ export const deleteUser = internalMutation({
     await ctx.db.delete(user._id);
   },
 });
-
-
